@@ -1,5 +1,5 @@
 server:
- port: ${ZULL_PORT}
+ port: ${CONTAINER_PORT}
  
 spring:
  application:

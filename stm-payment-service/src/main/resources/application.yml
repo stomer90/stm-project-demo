@@ -1,5 +1,5 @@
 server:
- port: ${PAYMENT_PORT}
+ port: ${CONTAINER_PORT}
 
 spring:
  application:

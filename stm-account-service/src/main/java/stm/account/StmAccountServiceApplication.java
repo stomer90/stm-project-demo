@@ -41,9 +41,9 @@ public class StmAccountServiceApplication {
 				.apiInfo(new ApiInfoBuilder().version("1.0").title("Account API").description("Documentation Account API v1.0").build());
 	}
 	
-//	@Bean
-//	@LoadBalanced
-//	public RestTemplate restTemplate() {
-//		return new RestTemplate();
-//	}
+	@Bean
+	@LoadBalanced
+	public RestTemplate restTemplate() {
+		return new RestTemplate();
+	}
 }

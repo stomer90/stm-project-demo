@@ -19,6 +19,9 @@ public class AccountController {
 	@Autowired
 	PaymentClient paymentClient;
 	
+	@Autowired
+	PaymentIntegrationservice paymentIntegrationservice;
+	
 	@GetMapping("/hello")
 	@ResponseBody
 	public ResponseEntity<String> index(){
@@ -41,5 +44,12 @@ public class AccountController {
 	@ResponseBody
 	public ResponseEntity<List<PaymentInfo>> findAll(){
 		return paymentClient.findAll();
+	}
+	
+
+	@GetMapping("/hello-1")
+	@ResponseBody
+	public ResponseEntity<String> index_1(){
+		return ResponseEntity.ok(paymentIntegrationservice.active());
 	}
 }

@@ -21,6 +21,7 @@ services:
       - REGISTRY_HOST=stm-eureka-server
       - REGISTRY_PORT=8761
       - PAYMENT_HOST=payment-service
+      - CONTAINER_PORT=8090
     ports:
       - 8090:8090
     links:
@@ -39,6 +40,7 @@ services:
     environment:
       - REGISTRY_HOST=stm-eureka-server
       - REGISTRY_PORT=8761
+      - CONTAINER_PORT=8091
     ports:
       - 8091:8091
     links:
@@ -59,6 +61,7 @@ services:
     environment:
       - REGISTRY_HOST=stm-eureka-server
       - REGISTRY_PORT=8761
+      - CONTAINER_PORT=8989
     links:
       - stm-eureka-server
       - stm-account-service
