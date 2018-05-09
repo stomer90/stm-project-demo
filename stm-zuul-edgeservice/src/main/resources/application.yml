@@ -25,6 +25,8 @@ zuul:
 #ribbon.eureka.enabled=false
 
 eureka:
+ instance:
+  instance-id: ${INSTANCE_ID}
  client: 
   registerWithEureka: true
   fetchRegistry: true

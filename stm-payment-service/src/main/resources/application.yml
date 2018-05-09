@@ -11,3 +11,5 @@ eureka:
   fetchRegistry: true
   serviceUrl:
    defaultZone: http://${REGISTRY_HOST}:${REGISTRY_PORT}/eureka
+ instance:
+    instance-id: ${INSTANCE_ID}
