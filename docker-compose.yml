@@ -1,0 +1,72 @@
+version: '3.3'
+
+services:
+
+  stm-eureka-server:
+    image: stm-eureka-server-image:latest
+    container_name: stm-eureka-server
+    build: ./stm-eureka-server
+    ports:
+      - 8761:8761
+    restart:
+      unless-stopped
+    networks:
+      - stm-microservice
+
+  stm-account-service:
+    image: stm-account-service-image:latest
+    container_name: stm-account-service
+    build: ./stm-account-service
+    environment:
+      - REGISTRY_HOST=stm-eureka-server
+    ports:
+      - 8090:8090
+    links:
+      - stm-eureka-server    
+    depends_on:
+      - stm-eureka-server
+    restart:
+      unless-stopped
+    networks:
+      - stm-microservice
+
+  stm-payment-service:
+    image: stm-payment-service-image:latest
+    container_name: stm-payment-service
+    build: ./stm-payment-service
+    environment:
+      - REGISTRY_HOST=stm-eureka-server
+    ports:
+      - 8091:8091
+    links:
+      - stm-eureka-server
+    depends_on:
+      - stm-eureka-server
+    restart:
+      unless-stopped
+    networks:
+      - stm-microservice
+
+  stm-zuul-edgeservice:
+    image: stm-zuul-edgeservice-image:latest
+    container_name: stm-zuul-edgeservice
+    build: ./stm-zuul-edgeservice
+    ports:
+      - 8989:8989
+    environment:
+      - REGISTRY_HOST=stm-eureka-server
+    links:
+      - stm-eureka-server
+      - stm-account-service
+      - stm-payment-service
+    depends_on:
+      - stm-eureka-server
+      - stm-account-service
+      - stm-payment-service
+    restart:
+      unless-stopped
+    networks:
+      - stm-microservice
+
+networks:
+  stm-microservice:

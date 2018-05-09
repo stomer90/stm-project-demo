@@ -1,0 +1,20 @@
+spring:
+ application:
+  name: auth-service
+ datasource:
+  url: jdbc:mysql://192.168.99.100:33306/oauth2?useSSL=false
+  username: oauth2
+  password: oauth2
+  driver-class-name: com.mysql.jdbc.Driver
+  schema: classpath:/script/schema.sql
+  data: classpath:/script/data.sql
+
+server:
+ port: 9999
+
+eureka:
+ client:
+  registerWithEureka: true
+  fetchRegistry: true
+  serviceUrl:
+   defaultZone: http://${registry.host:localhost}:${registry.port:8761}/eureka

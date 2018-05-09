@@ -1,0 +1,34 @@
+server:
+ port: 8989
+ 
+spring:
+ application:
+  name: zuul-edgeservice
+  
+logging:
+ level:
+   org.springframework.web: INFO
+   org.springframework.security: DEBUG
+   com.hantsylabs: DEBUG
+ file: app.log
+
+zuul:
+ routes:
+  payment-service:
+   path: /payment/**
+   serviceId: payment-service
+  account-service:
+   path: /account/**
+   serviceId: account-service
+
+
+#ribbon.eureka.enabled=false
+
+eureka:
+ client: 
+  registerWithEureka: true
+  fetchRegistry: true
+  serviceUrl:
+   defaultZone: http://${REGISTRY_HOST}:${REGISTRY_PORT}/eureka
+
+#payments.ribbon.listOfServers=http://localhost:8091

@@ -1,0 +1,13 @@
+server:
+ port: 8091
+
+spring:
+ application:
+  name: payment-service
+
+eureka:
+ client:
+  registerWithEureka: true
+  fetchRegistry: true
+  serviceUrl:
+   defaultZone: http://${REGISTRY_HOST}:${REGISTRY_PORT}/eureka
