@@ -1,5 +1,8 @@
 package stm.account.integration;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PaymentInfo {
 	private String name;
 	public String getName() {

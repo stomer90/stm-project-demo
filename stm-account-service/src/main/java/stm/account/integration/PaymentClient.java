@@ -6,7 +6,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 
-@FeignClient(name = "payment-service")
+@FeignClient(name = "${PAYMENT_HOST}")
 public interface PaymentClient {
 
 	@GetMapping("/hello")
